@@ -2,6 +2,8 @@
  
 This "Food Truck Discovery Web App," using React and Django, visually helps people find nearby food trucks in Palo Alto based on their location.
 
+![Food Truck Discovery App Demo](app_demo.png)
+
 ## Installation Instructions
 
 1. Clone the repository
