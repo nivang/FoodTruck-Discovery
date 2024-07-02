@@ -7,6 +7,7 @@ This "Food Truck Discovery Web App," using React and Django, visually helps peop
 ## Installation Instructions
 
 1. Clone the repository
+   
 2. Navigate to the backend of the project
 ```
 $ cd backend
@@ -24,14 +25,16 @@ $ python -m pip install Django
 $ python -m pip install django-cors-headers
 ```
 5. Rename the .env.sample file in the "foodtruck-app" folder to .env and enter your mapbox access token in the quotation marks
-5. Run the backend server
+   
+6. Run the backend server
 ```
 $ python manage.py migrate
 
 $ python manage.py runserver
 ```
-6. Navigate to the frontend of the project
-7. Run the React App
+7. Navigate to the frontend of the project
+  
+8. Run the React App
 ```
 $ npm install
 $ npm start
