@@ -5,17 +5,21 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_TOKEN;
 
 export default function App() {
-  const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-122.39988421);
+  const mapContainer = useRef(null);
   const [lat, setLat] = useState(37.78845703);
+  const [lng, setLng] = useState(-122.39988421);
   const [zoom, setZoom] = useState(16.5);
   const [foodTruckLocations, setFoodTruckLocations] = useState({});
   const [mapMarkers, setMapMarkers] = useState([]);
-  const [inputs, setInputs] = useState({});
 
   const handleSubmit = (event) => {
-    console.log(inputs);
+    event.preventDefault();
+    const formData = event.target;
+    const inputLat = formData['latitude'].value;
+    const inputLng = formData['longitude'].value;
+    setLat(inputLat);
+    setLng(inputLng);
   }
 
   useEffect(() => {
@@ -29,6 +33,7 @@ export default function App() {
 
     }
 
+    console.log('fetching data for lat: '+lat+' lng: '+lng);
     fetchData();
 
   }, [lat, lng, zoom]);
@@ -74,23 +79,22 @@ export default function App() {
   return (
     <div>
       <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      Latitude: {lat} | Longitude: {lng} |  Zoom: {zoom}
       </div>
       <div ref={mapContainer} className="map-container" />
       <form onSubmit={handleSubmit}>
+        <label>Latitude:
+        <input
+          type="text"
+          name="latitude"
+        />
+        &nbsp;&nbsp;
         <label>Longitude:
           <input
-            type="number"
+            type="text"
             name="longitude"
-            value={inputs.longitude || ""}
           />
         </label>
-        <label>Latitude:
-          <input
-            type="number"
-            name="latitude"
-            value={inputs.latitude || ""}
-          />
         </label>
         <input type="submit" />
       </form>
