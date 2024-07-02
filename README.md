@@ -23,6 +23,7 @@ $ python -m pip install Django
 
 $ python -m pip install django-cors-headers
 ```
+5. Rename the .env.sample file in the "foodtruck-app" folder to .env and enter your mapbox access token in the quotation marks
 5. Run the backend server
 ```
 $ python manage.py migrate
